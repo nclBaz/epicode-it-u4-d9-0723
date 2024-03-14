@@ -6,11 +6,13 @@ public class User implements Comparable<User>{
 	private String name;
 	private String surname;
 	private int age;
+	private String city;
 
-	public User(String name, String surname, int age) {
+	public User(String name, String surname, int age, String city) {
 		this.name = name;
 		this.surname = surname;
 		this.age = age;
+		this.city = city;
 	}
 
 	public String getName() {
@@ -25,12 +27,18 @@ public class User implements Comparable<User>{
 		return age;
 	}
 
+
+	public String getCity() {
+		return city;
+	}
+
 	@Override
 	public String toString() {
 		return "User{" +
 				"name='" + name + '\'' +
 				", surname='" + surname + '\'' +
 				", age=" + age +
+				", city=" + city +
 				'}';
 	}
 
