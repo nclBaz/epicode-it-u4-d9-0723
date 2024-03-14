@@ -66,5 +66,45 @@ public class Application {
 
         raggruppatiPerCittàConStatistiche.forEach((città, stats) -> System.out.println("Città: " + città + ", " + stats));
 
+
+        // *********************************** COMPARATORS *************************************
+        // 1. Ordinare in base all'età (ordine crescente)
+        List<User> usersSortedByAge = usersList.stream().sorted(Comparator.comparingInt(user-> user.getAge())).toList();
+        usersSortedByAge.forEach(System.out::println);
+
+        // 2. Ordinare in base all'età (ordine decrescente)
+        List<User> usersSortedByAgeDesc = usersList.stream().sorted(Comparator.comparingInt(User::getAge).reversed()).toList();
+        usersSortedByAgeDesc.forEach(System.out::println);
+
+        // 3. Ordinare in base al cognome
+        List<User> usersSortedBySurname = usersList.stream().sorted(Comparator.comparing(User::getSurname)).toList();
+        usersSortedBySurname.forEach(System.out::println);
+
+
+        // *********************************** LIMIT *************************************
+        System.out.println(" -------------------- LIMIT ------------------------ ");
+        List<User> threeUsersSortedBySurname = usersList.stream().sorted(Comparator.comparing(User::getSurname)).skip(3).limit(3).toList();
+        threeUsersSortedBySurname.forEach(System.out::println);
+
+        // *********************************** MAP TO *************************************
+        System.out.println(" -------------------- MAP TO ------------------------ ");
+
+        // 1. Calcolo della somma totale delle età (con map e reduce)
+        int totalAge = usersList.stream().map(User::getAge).reduce(0, (partialSum, current) -> partialSum + current);
+        System.out.println("Età totale: " + totalAge);
+
+
+        // 2. Calcolo della somma totale delle età (con mapToInt)
+        int totalAge2 = usersList.stream().mapToInt(User::getAge).sum();
+        System.out.println("Età totale 2: " + totalAge2);
+
+        // 3. Calcolo della somma totale delle età (con mapToInt)
+        double average2 = usersList.stream().mapToInt(User::getAge).average().getAsDouble();
+        System.out.println("Media totale 2: " + average2);
+
+        // 4. Restituisce l'età massima
+        int etàMassima = usersList.stream().mapToInt(User::getAge).max().getAsInt();
+        System.out.println("Età massima: " + etàMassima);
+
     }
 }
