@@ -1,0 +1,7 @@
+HELLO WORLD
+HELLO WORLD
+HELLO WORLD
+HELLO WORLD
+HELLO WORLD
+User{name='Aldo', surname='Baglio', age=20, city=Roma}
+User{name='Aldo', surname='Baglio', age=20, city=Roma}
